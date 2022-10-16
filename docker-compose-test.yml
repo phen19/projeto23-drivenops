@@ -7,20 +7,20 @@ services:
     ports:
       - 4457:5432
     env_file:
-      - ./back-end/.env
+      - ./back-end/.env.test
     volumes:
       - pg_sorteador-db:/var/lib/postgresql/data
 
-  node_sorteador_app:
+  node_sorteador_app_test:
     container_name: node_sorteador_app
     build: ./back-end
-    image: node_sorteador_app_image
+    image: node_sorteador_app_test_image
     ports:
       - 5000:5000
     depends_on:
       - postgres_sorteador_db
     env_file:
-      - ./back-end/.env
+      - ./back-end/.env.test
 
   app_react:
     build: ./front-end
@@ -38,7 +38,7 @@ services:
       - build_react:/var/www/html
     depends_on:
       - postgres_sorteador_db
-      - node_sorteador_app
+      - node_sorteador_app_test
       - app_react
 
 volumes:
