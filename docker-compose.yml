@@ -1,0 +1,20 @@
+version: "3"
+services:
+  app_react:
+    build: ./front-end
+    container_name: react_front
+    volumes:
+      - build_react:/var/www/html
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - build_react:/var/www/html
+    depends_on:
+      - app_react
+
+volumes:
+  build_react:
