@@ -1,15 +1,17 @@
-FROM node:16
+FROM node:16.14
 
-# pasta para aonde vai o build
 WORKDIR /app
 
 COPY . .
+
 RUN npm i
 
+RUN mkdir -p /var/www/html
 
 RUN npm run build
 
-RUN mkdir -p /var/www/html
+RUN mv public /var/www/html
+
 RUN mv build/* /var/www/html
 
 WORKDIR /

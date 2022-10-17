@@ -25,7 +25,7 @@ services:
   app_react:
     build: ./front-end
     container_name: react_front
-    image: app_react_image
+    image: app_react
     volumes:
       - build_react:/var/www/html
 
