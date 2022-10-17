@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function App() {
   const [student, setStudent] = useState(null);
@@ -7,19 +7,19 @@ function App() {
   useEffect(async () => {
     const API_URL = process.env.REACT_APP_BASE_URL;
     try {
-      const response = await axios.get(`${API_URL}/students/random`);
+      const response = await axios.get(`${API_URL}`);
       const student = response.data;
       if (!student) {
-        alert('Xablau! Não há estudantes cadastrados para o sorteio!');
+        alert("Xablau! Não há estudantes cadastrados para o sorteio!");
       } else {
         setStudent(student);
       }
     } catch (error) {
-      alert('Não foi possível realizar o sorteio!');
+      alert("Não foi possível realizar o sorteio!");
     }
   }, []);
 
-  return student ? <h1>{student.name}</h1> : 'Carregando...';
+  return student ? <h1>{student.name}</h1> : "Carregando...";
 }
 
 export default App;
