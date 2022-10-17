@@ -14,6 +14,7 @@ jobs:
           envkey_POSTGRES_PASSWORD: "postgres"
           envkey_POSTGRES_DB: "students_test"
           envkey_DATABASE_URL: "postgres://postgres:postgres@postgres_sorteador_db:5432/students_test"
+          directory: back-end
           file_name: .env.test
       - name: Run tests
         run: docker-compose -f docker-compose-test.yml run express_api_tests npm run test
