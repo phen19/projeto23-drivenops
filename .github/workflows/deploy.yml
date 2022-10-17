@@ -3,7 +3,7 @@ on:
     branches:
       - master
 
-name: Build and Deploy AWS EC2
+name: Build and Deploy AWS
 jobs:
   build:
     runs-on: self-hosted
