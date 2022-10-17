@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - master
 
 name: Build and Deploy AWS
 jobs:
