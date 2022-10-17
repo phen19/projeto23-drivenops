@@ -4,17 +4,18 @@ jobs:
   PullRequest:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code
+      - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Make a new envfile
+      - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
-      with:
-        envkey_POSTGRES_USER: "postgres"
-        envkey_POSTGRES_PASSWORD: "postgres"
-        envkey_POSTGRES_DB: "students_test"
-        envkey_DATABASE_URL: "postgresql://postgres:postgres@postgres_sorteador_db:5432/students_test"
-        file_name: .env.test
+        #precisamos criar um .env file por que o nosso está no gitignore
+        with:
+          envkey_POSTGRES_USER: "postgres"
+          envkey_POSTGRES_PASSWORD: "postgres"
+          envkey_POSTGRES_DB: "students_test"
+          envkey_DATABASE_URL: "postgres://postgres:postgres@postgres_sorteador_db:5432/students_test"
+          file_name: .env.test
       - name: Run tests
-        run: docker-compose -f docker-compose-test.yml run node_sorteador_app npm run test
+        run: docker-compose -f docker-compose-test.yml run express_api_tests npm run test
       - name: Build
         run: npm i --prefix back-end && npm run build --prefix back-end
