@@ -1,7 +1,7 @@
-name: Pull Request on Github
+name: PullRequest
 on: [pull_request]
 jobs:
-  PullRequest-Github:
+  PullRequest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository code
@@ -9,10 +9,10 @@ jobs:
       - name: Make a new envfile
         uses: SpicyPizza/create-envfile@v1.3
       with:
-        envkey_POSTGRES_USER: 'postgres'
-        envkey_POSTGRES_PASSWORD: 'postgres'
-        envkey_POSTGRES_DB: 'students_test'
-        envkey_DATABASE_URL: 'postgresql://postgres:postgres@postgres_sorteador_db:5432/students_test'  
+        envkey_POSTGRES_USER: "postgres"
+        envkey_POSTGRES_PASSWORD: "postgres"
+        envkey_POSTGRES_DB: "students_test"
+        envkey_DATABASE_URL: "postgresql://postgres:postgres@postgres_sorteador_db:5432/students_test"
         directory: back-end
         file_name: .env.test
       - name: Run tests
